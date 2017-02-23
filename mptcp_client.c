@@ -55,12 +55,11 @@ void start_client(){
     RequestHeader.ack_num = 0;
 
     /* convert int num_interfaces to char */
-    char charNum[2];// = intToChar(opt.num_interfaces);
-    //char buffer[2];
+    char charNum[2];
     snprintf(charNum, 2, "%d\n", opt.num_interfaces);
 
     printf("charnum is: %s\n", charNum);
-    char *interfaceRequest = concat("MPREQ ", charNum);//intToChar(opt.num_interfaces));
+    char *interfaceRequest = concat("MPREQ ", charNum);
     RequestHeader.total_bytes=sizeof(interfaceRequest);
 
     struct packet RequestPacket;
@@ -74,15 +73,31 @@ void start_client(){
     }
     printf("size mp_sent: %lu\n", (unsigned long int)size);
 
+    /* get available interfaces */
     struct mptcp_header ReplyHeader;
-    char receiveData[100];
+    char receiveData[RWIN];
     struct packet ReceivePacket;
     ReceivePacket.header=&ReplyHeader;
     ReceivePacket.data=receiveData;
-    if( mp_recv(sockfd, &ReceivePacket, sizeof(ReceivePacket), 0) < 0) {
+    if( mp_recv(sockfd, &ReceivePacket, sizeof(receiveData), 0) < 0) {
         internalError("receive interface reply failed"); 
     }
     print_pkt(&ReceivePacket);
+
+    /* parse reply into port numbers */
+    char *str = ReceivePacket.data;
+    chopPrefix(str);
+    const char s[2] = ":";
+    char *token;
+   /* get the first token */
+   token = strtok(str, s);
+   /* walk through other tokens */
+   while( token != NULL ) 
+   {
+      printf( " %s\n", token );
+    
+      token = strtok(NULL, s);
+   }
 
 
 
@@ -100,8 +115,12 @@ char* concat(const char *s1, const char *s2) {
     return result;
 }
 
-char* intToChar(int num) {
-    char buffer[2];
-    snprintf(buffer, 2, "%d\n", num);
-    return buffer;
+void chopPrefix(char *str)
+{  
+    //assert(n != 0 && str != 0);
+    int n=5;
+    size_t len = strlen(str);
+    //if (n > len)
+    //    return;  // Or: n = len;
+    memmove(str, str+n, len - n + 1);
 }
