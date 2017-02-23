@@ -1,5 +1,7 @@
 #include "mptcp_core.h"
-//#include "mptcp_client.h"
+#include "mptcp_client.h"
+
+//./mptcp -n 6 -h 128.111.68.197 -p 5176 -f lala
 
 /* utility functions */
 void inputError(const char *format, ...){
@@ -32,10 +34,11 @@ int validate_port(char *p){
 }
 
 char* validate_filename(char *f){
-    /*struct sockaddr_in sa;
-    if(inet_pton(AF_INET, p, &(sa.sin_addr))==0){
-        inputError("Invalid source ip address number: %s\n", p);
-    }*/
+    int fd = open(f, O_RDONLY);
+    if (fd == -1)
+    {
+        inputError("Error opening file: %s\n", f);
+    }
     return f;
 }
 
@@ -69,7 +72,7 @@ int main(int argc, char *argv[]){
 
 
     /* dispatch client */
-    //start_client();
+    start_client();
 
     return 0;
 }

@@ -57,7 +57,13 @@ void internalError(const char *format, ...){
 }
 
 
-void endProgram(char *msg){
-    fprintf(stderr, msg);
+void endProgram(const char *format, ...){
+    fprintf(stderr, "Fatal error: ");
+
+    va_list ap;
+    va_start(ap, format);
+    vfprintf(stderr, format, ap);
+    fprintf(stderr, "\n");
+    va_end(ap);
     exit(EXIT_FAILURE);
 }

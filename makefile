@@ -1,13 +1,14 @@
 CC= gcc
-CFLAGS= -Wall
+CFLAGS= -Wall -L./libmptcp
 BINARY= mptcp
 
-#default:	mptcp_core.o mptcp_client.o mptcp_driver.o
-default:	mptcp_core.o mptcp_driver.o
-	$(CC) $(CFLAGS) -o $(BINARY) $^
+default:
+	gcc -c -Ilibmptcp mptcp_core.h mptcp_core.c mptcp_client.h mptcp_client.c mptcp_driver.c
+	gcc -o mptcp mptcp_driver.o mptcp_client.o mptcp_core.o -L. -lmptcp
+
 
 .o.c:
-	$(CC) $(CFLAGS) -c $<
+	
 
 clean:
 	-rm -f *.o

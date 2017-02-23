@@ -1,6 +1,8 @@
 #ifndef _MPTCP_CORE_H_
 #define _MPTCP_CORE_H_
 
+#include "mptcp.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -19,6 +21,10 @@
 #include <sys/select.h>
 #include <netinet/in.h>
 
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <sys/sendfile.h>
+
 #define BUFFSIZE 2048
 
 /* struct that stores ip address, port, and options */
@@ -35,10 +41,8 @@ struct options{
     char *filename;
 };
 
-
 /* global options struct */
 extern struct options opt;
-
 
 /* initialize options struct to default values */
 extern void options_init(void);
@@ -50,9 +54,9 @@ extern void options_print(void);
 extern int hostname_to_ip(char * hostname , char* ip);
 
 /* print error message to @stderr*/
-extern void internalError(const char *, ...);
+extern void internalError(const char *format, ...);
 
 /* print message to @stderr and exit */
-extern void endProgram(char *msg);
+extern void endProgram(const char *format, ...);
 
 #endif
