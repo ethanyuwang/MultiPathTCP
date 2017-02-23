@@ -6,6 +6,7 @@ void start_client(){
     int sockfd = 0;
     int serverlen;
     int recvlen;
+    int len = sizeof(struct sockaddr);  /* length of a sockaddr */
     struct hostent *hp;                 /* host information */
     struct sockaddr_in dest_addr;       /* remote destination address */
     struct sockaddr_in src_addr;        /* local sender address */
@@ -33,79 +34,74 @@ void start_client(){
     bzero((char *) &dest_addr, sizeof(dest_addr));
 
     dest_addr.sin_family = AF_INET;
-
     bcopy((char *)hp->h_addr, (char *)&dest_addr.sin_addr.s_addr, hp->h_length);
-    dest_addr.sin_addr.s_addr = htonl(INADDR_ANY);
     dest_addr.sin_port = htons(opt.port);
 
-    /* construct local sender address */
-    bzero((char *) &src_addr, sizeof(src_addr));
-
-    src_addr.sin_family = AF_INET;
-
-    bcopy((char *)hp->h_addr, (char *)&src_addr.sin_addr.s_addr, hp->h_length);
-    src_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    src_addr.sin_port = htons(opt.port); //?????????????????
-
-
     /* connect to server */
-    struct mptcp_header RequestHeader;// = malloc(sizeof(*RequestHeader));
-    RequestHeader.dest_addr = dest_addr;
-    RequestHeader.src_addr = src_addr;
-    char *interfaceRequest = concat("MPREQ n_paths"+);
-
-    struct packet RequestPacket;
-
     if (mp_connect(sockfd , (struct sockaddr *)&dest_addr , sizeof(dest_addr)) < 0) {
         endProgram("Connect Failed");
     }
 
-
-    /* get available interface numbers */
-    //endProgram("Conneted to mtpct server");
+    /* construct local sender address */
+    bzero((char *) &src_addr, sizeof(src_addr));
+    //src_addr.sin_family = AF_INET;
+    getsockname(sockfd, (struct sockaddr *) &src_addr, &len);
 
     /* request for available interfaces */
-
-   /* while(1)
-    {
-
-            fgets(sendBuff, BUFFSIZE, stdin);
-            if( send(sockfd , sendBuff , strlen(sendBuff) , 0) < 0) {
-                internalError("send Failed"); 
-            }
-
-            if( recv(sockfd , recvBuff , 2000 , 0) < 0) {
-                internalError("recv Failed");     
-            }
-            else {
-                printf("%s", recvBuff);
-            }
-    } */
-
-    //close(sockfd);
-    //endProgram("Connection closed");
-}
-
-void requestPaths(){
-    struct mptcp_header RequestHeader;// = malloc(sizeof(*RequestHeader));
+    struct mptcp_header RequestHeader;
     RequestHeader.dest_addr = dest_addr;
+    RequestHeader.src_addr = src_addr;
+    RequestHeader.seq_num = 1;
+    RequestHeader.ack_num = 0;
+
+    /* convert int num_interfaces to char */
+    char charNum[2];// = intToChar(opt.num_interfaces);
+    //char buffer[2];
+    snprintf(charNum, 2, "%d\n", opt.num_interfaces);
+
+    printf("charnum is: %s\n", charNum);
+    char *interfaceRequest = concat("MPREQ ", charNum);//intToChar(opt.num_interfaces));
+    RequestHeader.total_bytes=sizeof(interfaceRequest);
 
     struct packet RequestPacket;
+    RequestPacket.header=&RequestHeader;
+    RequestPacket.data=interfaceRequest;
 
+    int size;
+    print_pkt(&RequestPacket);
+    if(size = mp_send(sockfd, &RequestPacket, RequestHeader.total_bytes, 0) < 0) {
+        internalError("send interface request failed"); 
+    }
+    printf("size mp_sent: %lu\n", (unsigned long int)size);
+
+    struct mptcp_header ReplyHeader;
+    char receiveData[100];
+    struct packet ReceivePacket;
+    ReceivePacket.header=&ReplyHeader;
+    ReceivePacket.data=receiveData;
+    if( mp_recv(sockfd, &ReceivePacket, sizeof(ReceivePacket), 0) < 0) {
+        internalError("receive interface reply failed"); 
+    }
+    print_pkt(&ReceivePacket);
+
+
+
+    close(sockfd);
+    endProgram("Connection closed");
 }
 
 /* utility functions */
-char* concat(const char *s1, const char *s2)
-{
+char* concat(const char *s1, const char *s2) {
     char *result = malloc(strlen(s1)+strlen(s2)+1);//+1 for the zero-terminator
     //in real code you would check for errors in malloc here
     strcpy(result, s1);
     strcat(result, s2);
+    fprintf("Concate: %s\n", result);
     return result;
 }
 
-char* int(const char *s1, const char *s2)
-char snum[5];
-
-// convert 123 to string [buf]
-itoa(num, snum, 10);
+char* intToChar(int num) {
+    char buffer[2];
+    snprintf(buffer, 2, "%d\n", num);
+    return buffer;
+}

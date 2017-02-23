@@ -18,8 +18,12 @@ void inputError(const char *format, ...){
 int validate_num_interfaces(char *n){
     int num_interfaces = atoi(n);
 
-    if(num_interfaces < 0){
-        inputError("Invalid interface number: %s\n", n);
+    if(num_interfaces < 1){
+        inputError("Invalid interface number: %s. Interface number has to be greater than 0\n", n);
+    }
+
+    if(num_interfaces > 16){
+        inputError("Invalid interface number: %s. Interface number maximum is 16\n", n);
     }
     return num_interfaces;
 }

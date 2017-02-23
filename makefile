@@ -3,8 +3,8 @@ CFLAGS= -Wall -L./libmptcp
 BINARY= mptcp
 
 default:
-	gcc -c -Ilibmptcp mptcp_core.h mptcp_core.c mptcp_client.h mptcp_client.c mptcp_driver.c
-	gcc -o mptcp mptcp_driver.o mptcp_client.o mptcp_core.o -L. -lmptcp
+	gcc -g -c -Ilibmptcp print_pkt.c mptcp_core.h mptcp_core.c mptcp_client.h mptcp_client.c mptcp_driver.c
+	gcc -o mptcp mptcp_driver.o mptcp_client.o mptcp_core.o print_pkt.o -L. -lmptcp
 
 
 .o.c:
