@@ -25,6 +25,8 @@
 #include <fcntl.h>
 #include <sys/sendfile.h>
 
+#include <pthread.h>
+
 #define BUFFSIZE 2048
 
 /* struct that stores ip address, port, and options */

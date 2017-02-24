@@ -4,7 +4,7 @@ BINARY= mptcp
 
 default:
 	gcc -g -c -Ilibmptcp print_pkt.c mptcp_core.h mptcp_core.c mptcp_client.h mptcp_client.c mptcp_driver.c
-	gcc -o mptcp mptcp_driver.o mptcp_client.o mptcp_core.o print_pkt.o -L. -lmptcp
+	gcc -pthread -o mptcp mptcp_driver.o mptcp_client.o mptcp_core.o print_pkt.o -L. -lmptcp
 
 
 .o.c:
