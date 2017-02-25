@@ -3,33 +3,35 @@ Starting client..
 File total size is: 1599
 total_bytes: 8
 interfaceRequest: MPREQ 3
+
 --------SEND-SEND-SEND-SEND--------
 dest port   : 5176
 dest addr   : 128.111.68.197
-src port    : 56348
+src port    : 34433
 src addr    : 192.168.126.135
 seq_num     : 1
 ack_num     : 0
 total_bytes : 8
 data        : MPREQ 3
+
 --------------------------------------
 size mp_sent: 0
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49752
+dest port   : 50276
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 1
 ack_num     : 0
 total_bytes : 23
-data        : MPOK 56914:56356:40721
+data        : MPOK 47614:53353:45191
 --------------------------------------
-connected to: 56914
+connected to: 47614
 ==============Thread 1:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 56914
+dest port   : 47614
 dest addr   : 128.111.68.197
-src port    : 43436
+src port    : 59808
 src addr    : 192.168.126.135
 seq_num     : 1
 ack_num     : 0
@@ -37,73 +39,24 @@ total_bytes : 1599
 data        : The goal of this assignment will be to create an HTTP(S) proxy server to monitor traffic coming
 applications make and observe th
 --------------------------------------
-connected to: 56356
-==============Thread 2:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56356
-dest addr   : 128.111.68.197
-src port    : 41260
-src addr    : 192.168.126.135
-seq_num     : 1
-ack_num     : 0
-total_bytes : 1599
-data        : The goal of this assignment will be to create an HTTP(S) proxy server to monitor traffic coming
-applications make and observe th
---------------------------------------
-connected to: 40721
-==============Thread 3:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 40721
-dest addr   : 128.111.68.197
-src port    : 54234
-src addr    : 192.168.126.135
-seq_num     : 1
-ack_num     : 0
-total_bytes : 1599
-data        : The goal of this assignment will be to create an HTTP(S) proxy server to monitor traffic coming
-applications make and observe th
---------------------------------------
+connected to: 53353
+connected to: 45191
 ==============Thread 1:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
+dest port   : 50277
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 0
 ack_num     : 129
 total_bytes : 0
-data        : ½
+data        : Ô
 --------------------------------------
-Packet recived: 1
-==============Thread 1:==============
+==============Thread 3:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 56914
+dest port   : 45191
 dest addr   : 128.111.68.197
-src port    : 43436
-src addr    : 192.168.126.135
-seq_num     : 129
-ack_num     : 0
-total_bytes : 1599
-data        : The goal of this assignment will be to create an HTTP(S) proxy server to monitor traffic coming
-applications make and observe th
---------------------------------------
-==============Thread 2:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 1
-ack_num     : 129
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 1
-==============Thread 2:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56356
-dest addr   : 128.111.68.197
-src port    : 41260
+src port    : 45641
 src addr    : 192.168.126.135
 seq_num     : 129
 ack_num     : 0
@@ -111,47 +64,22 @@ total_bytes : 1599
 data        : e data that is being sent over the network. In addition, you will
 be able to observe how different apps use and design their dif
 --------------------------------------
-==============Thread 1:==============
+==============Thread 3:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
+dest port   : 50278
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 1
 ack_num     : 257
 total_bytes : 0
-data        : ½
+data        : Ô
 --------------------------------------
-Packet recived: 2
 ==============Thread 1:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 56914
+dest port   : 47614
 dest addr   : 128.111.68.197
-src port    : 43436
-src addr    : 192.168.126.135
-seq_num     : 257
-ack_num     : 0
-total_bytes : 1599
-data        : e data that is being sent over the network. In addition, you will
-be able to observe how different apps use and design their dif
---------------------------------------
-==============Thread 2:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 2
-ack_num     : 257
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 2
-==============Thread 2:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56356
-dest addr   : 128.111.68.197
-src port    : 41260
+src port    : 59808
 src addr    : 192.168.126.135
 seq_num     : 257
 ack_num     : 0
@@ -162,46 +90,20 @@ si
 --------------------------------------
 ==============Thread 1:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
+dest port   : 50277
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 2
 ack_num     : 385
 total_bytes : 0
-data        : ½
+data        : Ô
 --------------------------------------
-Packet recived: 3
-==============Thread 1:==============
+==============Thread 3:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 56914
+dest port   : 45191
 dest addr   : 128.111.68.197
-src port    : 43436
-src addr    : 192.168.126.135
-seq_num     : 385
-ack_num     : 0
-total_bytes : 1599
-data        : ferent APIs to properly perform
-their functions. As an extension, you will modify the responses for a specific application to
-si
---------------------------------------
-==============Thread 2:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 3
-ack_num     : 385
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 3
-==============Thread 2:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56356
-dest addr   : 128.111.68.197
-src port    : 41260
+src port    : 45641
 src addr    : 192.168.126.135
 seq_num     : 385
 ack_num     : 0
@@ -210,48 +112,22 @@ data        : mulate a malicious attack that can be performed through such means
 Simple HTTP Proxy Server
 A proxy is simply a server which si
 --------------------------------------
-==============Thread 1:==============
+==============Thread 3:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
+dest port   : 50278
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 3
 ack_num     : 513
 total_bytes : 0
-data        : ½
+data        : Ô
 --------------------------------------
-Packet recived: 4
 ==============Thread 1:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 56914
+dest port   : 47614
 dest addr   : 128.111.68.197
-src port    : 43436
-src addr    : 192.168.126.135
-seq_num     : 513
-ack_num     : 0
-total_bytes : 1599
-data        : mulate a malicious attack that can be performed through such means.
-Simple HTTP Proxy Server
-A proxy is simply a server which si
---------------------------------------
-==============Thread 3:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49755
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 4
-ack_num     : 513
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 4
-==============Thread 3:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 40721
-dest addr   : 128.111.68.197
-src port    : 54234
+src port    : 59808
 src addr    : 192.168.126.135
 seq_num     : 513
 ack_num     : 0
@@ -261,119 +137,44 @@ middleÂ­man between the two. The client sends the proxy server a request
 --------------------------------------
 ==============Thread 1:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
+dest port   : 50277
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 4
 ack_num     : 641
 total_bytes : 0
-data        : ½
+data        : Ô
 --------------------------------------
-Packet recived: 5
-==============Thread 1:==============
+==============Thread 2:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 56914
+dest port   : 53353
 dest addr   : 128.111.68.197
-src port    : 43436
+src port    : 37033
 src addr    : 192.168.126.135
 seq_num     : 641
 ack_num     : 0
 total_bytes : 1599
-data        : ts in between a client and a destination and acts as a
-middleÂ­man between the two. The client sends the proxy server a request 
---------------------------------------
-==============Thread 2:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 4
-ack_num     : 513
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 5
-==============Thread 2:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56356
-dest addr   : 128.111.68.197
-src port    : 41260
-src addr    : 192.168.126.135
-seq_num     : 513
-ack_num     : 0
-total_bytes : 1599
-data        : and the proxy server
-makes a request on behalf of the client to the destination. It then accepts the destinations
-response and p
---------------------------------------
-==============Thread 3:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49755
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 6
-ack_num     : 769
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 6
-==============Thread 3:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 40721
-dest addr   : 128.111.68.197
-src port    : 54234
-src addr    : 192.168.126.135
-seq_num     : 769
-ack_num     : 0
-total_bytes : 1599
 data        : and the proxy server
 makes a request on behalf of the client to the destination. It then accepts the destinations
 response and p
 --------------------------------------
 ==============Thread 2:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 6
-ack_num     : 769
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 6
-==============Thread 2:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56356
-dest addr   : 128.111.68.197
-src port    : 41260
-src addr    : 192.168.126.135
-seq_num     : 769
-ack_num     : 0
-total_bytes : 1599
-data        : asses it along to the client. By doing so, a proxy server is able to sniff all of the
-traffic that passes between the two partie
---------------------------------------
-==============Thread 1:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
+dest port   : 50279
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 5
 ack_num     : 769
 total_bytes : 0
-data        : ½
+data        : Ô
 --------------------------------------
-Packet recived: 6
-==============Thread 1:==============
+==============Thread 3:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 56914
+dest port   : 45191
 dest addr   : 128.111.68.197
-src port    : 43436
+src port    : 45641
 src addr    : 192.168.126.135
 seq_num     : 769
 ack_num     : 0
@@ -381,47 +182,22 @@ total_bytes : 1599
 data        : asses it along to the client. By doing so, a proxy server is able to sniff all of the
 traffic that passes between the two partie
 --------------------------------------
-==============Thread 2:==============
+==============Thread 3:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
+dest port   : 50278
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 6
 ack_num     : 897
 total_bytes : 0
-data        : ½
+data        : Ô
 --------------------------------------
-Packet recived: 7
-==============Thread 2:==============
+==============Thread 1:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 56356
+dest port   : 47614
 dest addr   : 128.111.68.197
-src port    : 41260
-src addr    : 192.168.126.135
-seq_num     : 897
-ack_num     : 0
-total_bytes : 1599
-data        : asses it along to the client. By doing so, a proxy server is able to sniff all of the
-traffic that passes between the two partie
---------------------------------------
-==============Thread 3:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49755
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 7
-ack_num     : 897
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 7
-==============Thread 3:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 40721
-dest addr   : 128.111.68.197
-src port    : 54234
+src port    : 59808
 src addr    : 192.168.126.135
 seq_num     : 897
 ack_num     : 0
@@ -433,98 +209,20 @@ To implement a
 --------------------------------------
 ==============Thread 1:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 7
-ack_num     : 897
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 7
-==============Thread 1:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56914
-dest addr   : 128.111.68.197
-src port    : 43436
-src addr    : 192.168.126.135
-seq_num     : 897
-ack_num     : 0
-total_bytes : 1599
-data        : s.
-Your proxy server will be functioning as a server, listening for incoming client requests at a
-specified port.
-To implement a
---------------------------------------
-==============Thread 1:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 8
-ack_num     : 1025
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 8
-==============Thread 1:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56914
-dest addr   : 128.111.68.197
-src port    : 43436
-src addr    : 192.168.126.135
-seq_num     : 1025
-ack_num     : 0
-total_bytes : 1599
-data        : s.
-Your proxy server will be functioning as a server, listening for incoming client requests at a
-specified port.
-To implement a
---------------------------------------
-==============Thread 3:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49755
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 8
-ack_num     : 1025
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 8
-==============Thread 3:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 40721
-dest addr   : 128.111.68.197
-src port    : 54234
-src addr    : 192.168.126.135
-seq_num     : 1025
-ack_num     : 0
-total_bytes : 1599
-data        :  simple HTTP proxy server, you need to be able to perform the following
-operations:
-1. Parse the HTTP request line from the clie
---------------------------------------
-==============Thread 2:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
+dest port   : 50277
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 7
 ack_num     : 1025
 total_bytes : 0
-data        : ½
+data        : Ô
 --------------------------------------
-Packet recived: 8
 ==============Thread 2:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 56356
+dest port   : 53353
 dest addr   : 128.111.68.197
-src port    : 41260
+src port    : 37033
 src addr    : 192.168.126.135
 seq_num     : 1025
 ack_num     : 0
@@ -533,73 +231,22 @@ data        :  simple HTTP proxy server, you need to be able to perform the foll
 operations:
 1. Parse the HTTP request line from the clie
 --------------------------------------
-==============Thread 3:==============
+==============Thread 2:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49755
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 9
-ack_num     : 1153
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 9
-==============Thread 3:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 40721
-dest addr   : 128.111.68.197
-src port    : 54234
-src addr    : 192.168.126.135
-seq_num     : 1153
-ack_num     : 0
-total_bytes : 1599
-data        :  simple HTTP proxy server, you need to be able to perform the following
-operations:
-1. Parse the HTTP request line from the clie
---------------------------------------
-==============Thread 1:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
+dest port   : 50279
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 8
 ack_num     : 1153
 total_bytes : 0
-data        : ½
+data        : Ô
 --------------------------------------
-Packet recived: 9
-==============Thread 1:==============
+==============Thread 3:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 56914
+dest port   : 45191
 dest addr   : 128.111.68.197
-src port    : 43436
-src addr    : 192.168.126.135
-seq_num     : 1153
-ack_num     : 0
-total_bytes : 1599
-data        : nt
-a. In an HTTP request message, there are request header and request contentÍ¾ and
-in the request header, the first line is ca
---------------------------------------
-==============Thread 2:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 9
-ack_num     : 1153
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 9
-==============Thread 2:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56356
-dest addr   : 128.111.68.197
-src port    : 41260
+src port    : 45641
 src addr    : 192.168.126.135
 seq_num     : 1153
 ack_num     : 0
@@ -610,71 +257,20 @@ in the request header, the first line is ca
 --------------------------------------
 ==============Thread 3:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49755
+dest port   : 50278
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 9
 ack_num     : 1281
 total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 10
-==============Thread 3:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 40721
-dest addr   : 128.111.68.197
-src port    : 54234
-src addr    : 192.168.126.135
-seq_num     : 1281
-ack_num     : 0
-total_bytes : 1599
-data        : nt
-a. In an HTTP request message, there are request header and request contentÍ¾ and
-in the request header, the first line is ca
+data        : Ô
 --------------------------------------
 ==============Thread 1:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 10
-ack_num     : 1281
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 10
-==============Thread 1:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 56914
+dest port   : 47614
 dest addr   : 128.111.68.197
-src port    : 43436
-src addr    : 192.168.126.135
-seq_num     : 1281
-ack_num     : 0
-total_bytes : 1599
-data        : lled request line. Request line consists of
-request method, request URI and the protocol version.
-b. From the request URI you ne
---------------------------------------
-==============Thread 2:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 10
-ack_num     : 1281
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 10
-==============Thread 2:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56356
-dest addr   : 128.111.68.197
-src port    : 41260
+src port    : 59808
 src addr    : 192.168.126.135
 seq_num     : 1281
 ack_num     : 0
@@ -685,72 +281,20 @@ b. From the request URI you ne
 --------------------------------------
 ==============Thread 1:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
+dest port   : 50277
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 10
 ack_num     : 1409
 total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 11
-==============Thread 1:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56914
-dest addr   : 128.111.68.197
-src port    : 43436
-src addr    : 192.168.126.135
-seq_num     : 1409
-ack_num     : 0
-total_bytes : 1599
-data        : lled request line. Request line consists of
-request method, request URI and the protocol version.
-b. From the request URI you ne
+data        : Ô
 --------------------------------------
 ==============Thread 3:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49755
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 11
-ack_num     : 1409
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 11
-==============Thread 3:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 40721
+dest port   : 45191
 dest addr   : 128.111.68.197
-src port    : 54234
-src addr    : 192.168.126.135
-seq_num     : 1409
-ack_num     : 0
-total_bytes : 1599
-data        : ed to identify the server to contact.
-c. You are supposed to handle methods specified in protocol HTTP/1.1 in this
-assignment.
-i
---------------------------------------
-==============Thread 2:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 11
-ack_num     : 1409
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 11
-==============Thread 2:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56356
-dest addr   : 128.111.68.197
-src port    : 41260
+src port    : 45641
 src addr    : 192.168.126.135
 seq_num     : 1409
 ack_num     : 0
@@ -762,47 +306,20 @@ i
 --------------------------------------
 ==============Thread 3:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49755
+dest port   : 50278
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 11
 ack_num     : 1537
 total_bytes : 0
-data        : ½
+data        : Ô
 --------------------------------------
-Packet recived: 12
-==============Thread 3:==============
+==============Thread 1:==============
 --------SEND-SEND-SEND-SEND--------
-dest port   : 40721
+dest port   : 47614
 dest addr   : 128.111.68.197
-src port    : 54234
-src addr    : 192.168.126.135
-seq_num     : 1537
-ack_num     : 0
-total_bytes : 1599
-data        : ed to identify the server to contact.
-c. You are supposed to handle methods specified in protocol HTTP/1.1 in this
-assignment.
-i
---------------------------------------
-==============Thread 2:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 12
-ack_num     : 1537
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 12
-==============Thread 2:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56356
-dest addr   : 128.111.68.197
-src port    : 41260
+src port    : 59808
 src addr    : 192.168.126.135
 seq_num     : 1537
 ack_num     : 0
@@ -811,60 +328,12 @@ data        : . Note: You donâ€™t need to handle CONNECT command in this part
 --------------------------------------
 ==============Thread 1:==============
 --------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 12
-ack_num     : 1537
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 12
-==============Thread 1:==============
---------SEND-SEND-SEND-SEND--------
-dest port   : 56914
-dest addr   : 128.111.68.197
-src port    : 43436
-src addr    : 192.168.126.135
-seq_num     : 1537
-ack_num     : 0
-total_bytes : 1599
-data        : . Note: You donâ€™t need to handle CONNECT command in this part
---------------------------------------
-==============Thread 3:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49755
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 13
-ack_num     : -1
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 12
-==============Thread 2:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49754
+dest port   : 50277
 dest addr   : 169.231.128.117
 src port    : 5176
 src addr    : 128.111.68.197
 seq_num     : 12
 ack_num     : -1
 total_bytes : 0
-data        : ½
+data        : Ô
 --------------------------------------
-Packet recived: 12
-==============Thread 1:==============
---------RECEIVE-RECEIVE-RECEIVE--------
-dest port   : 49753
-dest addr   : 169.231.128.117
-src port    : 5176
-src addr    : 128.111.68.197
-seq_num     : 13
-ack_num     : -1
-total_bytes : 0
-data        : ½
---------------------------------------
-Packet recived: 12
