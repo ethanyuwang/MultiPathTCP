@@ -1,6 +1,7 @@
 #include "mptcp_client.h"
 
 char *buffer;
+int total_bytes, packageSize;
 
 void start_client(){
 	printf("Starting client..\n");
@@ -17,6 +18,7 @@ void start_client(){
 
     fseek( fp , 0L , SEEK_END);
     lSize = ftell( fp );
+
     rewind( fp );
 
     /* allocate memory for entire content */
@@ -30,7 +32,12 @@ void start_client(){
         fclose(fp),free(buffer),fputs("entire read fails",stderr),exit(1);
     }
 
-
+    /* prepare data */
+    total_bytes = strlen(buffer);
+    printf("File total size is: %d\n", total_bytes);
+    //char interfaceRequest[strlen(interfaceRequestPtr)];
+    //strcpy(interfaceRequest, interfaceRequestPtr);
+    //total_bytes=sizeof(interfaceRequest);
 
 
 
@@ -66,6 +73,9 @@ void start_client(){
         endProgram("Connect Failed");
     }
 
+
+
+    /*---------------Request interfaces------------------*/
     /* construct local sender address */
     bzero((char *) &src_addr, sizeof(src_addr));
     //src_addr.sin_family = AF_INET;
@@ -83,14 +93,21 @@ void start_client(){
     snprintf(charNum, 2, "%d\n", opt.num_interfaces);
 
     printf("charnum is: %s\n", charNum);
-    char *interfaceRequest = concat("MPREQ ", charNum);
-    RequestHeader.total_bytes=sizeof(interfaceRequest);
+    char *interfaceRequestPtr = concat("MPREQ ", charNum);
+
+    /* convert char pointer to char array */
+    char interfaceRequest[strlen(interfaceRequestPtr)];
+    strcpy(interfaceRequest, interfaceRequestPtr);
+    RequestHeader.total_bytes=sizeof(interfaceRequest+1);
+
+    printf("total_bytes: %d\n", RequestHeader.total_bytes);
+    printf("interfaceRequest: %s\n", interfaceRequest);
 
     struct packet RequestPacket;
     RequestPacket.header=&RequestHeader;
     RequestPacket.data=interfaceRequest;
 
-    int size;
+    ssize_t size;
     print_pkt(&RequestPacket);
     if(size = mp_send(sockfd, &RequestPacket, RequestHeader.total_bytes, 0) < 0) {
         internalError("send interface request failed"); 
@@ -123,15 +140,12 @@ void start_client(){
 
     while( token != NULL ) {
         int currentPortNum = (int) strtol(token, (char **)NULL, 10);
-        
-        
+
         pthread_create(&tid, NULL, clientThread, (void *)currentPortNum);
 
         token = strtok(NULL, s);
-   }
+    }
 
-        
-    
     pthread_exit(NULL);
 
 
@@ -148,8 +162,6 @@ void start_client(){
 void *clientThread(void *vargp)
 {
     int interfacePort = (int)vargp;
-    printf( "%d\n", interfacePort );
-    printf( "text: %s\n", buffer );
  
     /*---------------initialize a subflow socket as MPTCP to send data ------------------*/
     int sockfd = 0;
@@ -182,37 +194,57 @@ void *clientThread(void *vargp)
     if (mp_connect(sockfd , (struct sockaddr *)&dest_addr , sizeof(dest_addr)) < 0) {
         endProgram("Connect Failed");
     }
+    else {
+        printf( "connected to: %d\n", interfacePort );
+    }
 
+
+    /*--------------------send data-----------------------------*/
     /* construct local sender address */
     bzero((char *) &src_addr, sizeof(src_addr));
     //src_addr.sin_family = AF_INET;
     getsockname(sockfd, (struct sockaddr *) &src_addr, &len);
 
     /* request for available interfaces */
-    struct mptcp_header RequestHeader;
-    RequestHeader.dest_addr = dest_addr;
-    RequestHeader.src_addr = src_addr;
-    RequestHeader.seq_num = 1;
-    RequestHeader.ack_num = 0;
+    struct mptcp_header dataHeader;
+    dataHeader.dest_addr = dest_addr;
+    dataHeader.src_addr = src_addr;
+    dataHeader.seq_num = 1;
+    dataHeader.ack_num = 0;
 
-    /* convert int num_interfaces to char */
-    char charNum[2];
-    snprintf(charNum, 2, "%d\n", opt.num_interfaces);
+    /* take a piece of data*/
+    char dataPiece[MSS];
+    strncpy(dataPiece, buffer, MSS-1);
+    dataPiece[MSS] = 0;
+    dataHeader.total_bytes=total_bytes;
 
-    printf("charnum is: %s\n", charNum);
-    char *interfaceRequest = concat("MPREQ ", charNum);
-    RequestHeader.total_bytes=sizeof(interfaceRequest);
+    /*printf("total_bytes: %d\n", RequestHeader.total_bytes);
+    printf("interfaceRequest: %s\n", interfaceRequest);*/
 
-    struct packet RequestPacket;
-    RequestPacket.header=&RequestHeader;
-    RequestPacket.data=interfaceRequest;
+    struct packet dataPacket;
+    dataPacket.header=&dataHeader;
+    dataPacket.data=dataPiece;
 
-    int size;
-    print_pkt(&RequestPacket);
-    if(size = mp_send(sockfd, &RequestPacket, RequestHeader.total_bytes, 0) < 0) {
-        internalError("send interface request failed"); 
+    ssize_t size;
+    print_pkt(&dataPacket);
+    if(size = mp_send(sockfd, &dataPacket, sizeof(dataPiece), 0) < 0) {
+        internalError("send data packet failed"); 
     }
     printf("size mp_sent: %lu\n", (unsigned long int)size);
+
+    /* get reply ack */
+    struct mptcp_header ReplyHeader;
+    char receiveData[RWIN];
+    struct packet ReceivePacket;
+    ReceivePacket.header=&ReplyHeader;
+    ReceivePacket.data=receiveData;
+    if( mp_recv(sockfd, &ReceivePacket, sizeof(receiveData), 0) < 0) {
+        internalError("receive ack reply failed"); 
+    }
+    print_pkt(&ReceivePacket);
+
+
+    close(sockfd);
 
 }
 

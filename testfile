@@ -1,2 +1,23 @@
-hello world
-hhhh
+The goal of this assignment will be to create an HTTP(S) proxy server to monitor traffic coming
+applications make and observe the data that is being sent over the network. In addition, you will
+be able to observe how different apps use and design their different APIs to properly perform
+their functions. As an extension, you will modify the responses for a specific application to
+simulate a malicious attack that can be performed through such means.
+Simple HTTP Proxy Server
+A proxy is simply a server which sits in between a client and a destination and acts as a
+middle­man between the two. The client sends the proxy server a request and the proxy server
+makes a request on behalf of the client to the destination. It then accepts the destinations
+response and passes it along to the client. By doing so, a proxy server is able to sniff all of the
+traffic that passes between the two parties.
+Your proxy server will be functioning as a server, listening for incoming client requests at a
+specified port.
+To implement a simple HTTP proxy server, you need to be able to perform the following
+operations:
+1. Parse the HTTP request line from the client
+a. In an HTTP request message, there are request header and request content; and
+in the request header, the first line is called request line. Request line consists of
+request method, request URI and the protocol version.
+b. From the request URI you need to identify the server to contact.
+c. You are supposed to handle methods specified in protocol HTTP/1.1 in this
+assignment.
+i. Note: You don’t need to handle CONNECT command in this part
