@@ -68,6 +68,6 @@ int     mp_socket ( int domain, int type, int protocol );
  * prints packet header information + data load                               *
  *  - returns nothing, prints to standard out                                 *
  ******************************************************************************/
-void    print_pkt( const struct packet * );
+void    print_pkt( const struct packet *, int sendOrReceive );
 
 #endif // MPTCP_H

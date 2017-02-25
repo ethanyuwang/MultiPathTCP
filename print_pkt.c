@@ -5,8 +5,11 @@
  * prints packet header information + data load                               *
  *  - returns nothing, prints to standard out                                 *
  ******************************************************************************/
-void print_pkt( const struct packet * pkt ) {
-    printf( "--------------------------------------\n");
+void print_pkt( const struct packet * pkt, int sendOrReceive ) {
+    if (sendOrReceive==0)
+        printf( "--------SEND-SEND-SEND-SEND--------\n");
+    else
+        printf( "--------RECEIVE-RECEIVE-RECEIVE--------\n");
     printf( "dest port   : %d\n", ntohs(pkt->header->dest_addr.sin_port) );
     printf( "dest addr   : %s\n", inet_ntoa( pkt->header->dest_addr.sin_addr ) );
     printf( "src port    : %d\n", ntohs(pkt->header->src_addr.sin_port) );
