@@ -8,7 +8,7 @@ default:
 
 
 .o.c:
-	
+    
 
 clean:
 	-rm -f *.o

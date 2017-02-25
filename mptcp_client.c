@@ -2,14 +2,16 @@
 
 char *buffer;
 int total_bytes, global_ack_num, previous_global_ack_num, previous_ack_num;
-int threadNum;
+int threadNum, packet_sent, packet_received;
 
 void start_client(){
 	printf("Starting client..\n");
     global_ack_num = 1;
     previous_global_ack_num = 1;
     previous_ack_num = 1;
-    threadNum = 0;
+    threadNum = 1;
+    packet_sent = 0;
+    packet_received = 0;
 
     /*-----------------------------load textfile for sending-----------------------------*/
     FILE *fp;
@@ -207,10 +209,17 @@ void *clientThread(void *vargp)
     /*--------------------send data-----------------------------*/
     while (global_ack_num>0)
     {
-        /* take a piece of data*/
+        /* take a piece of data; resend lost package*/
         char dataPiece[MSS];
         strncpy(dataPiece, buffer, MSS);
+        buffer += MSS;
         dataPiece[MSS] = 0;
+        packet_sent++;
+        if (packet_received<packet_sent) {
+            for (int i=0; i < (packet_sent-packet_received); i++)
+                buffer -= MSS;
+            packet_sent = packet_received;
+        }
 
         /* construct local sender address */
         bzero((char *) &src_addr, sizeof(src_addr));
@@ -250,14 +259,16 @@ void *clientThread(void *vargp)
         /* update and synchronize q */
         global_ack_num = ReceivePacket.header->ack_num;
 
-        /*if (previous_ack_num!=ReceivePacket.header->ack_num) {
-            global_ack_num = ReceivePacket.header->ack_num;
-            previous_ack_num = ReceivePacket.header->ack_num;
-        }*/
+
+        if (ReceivePacket.header->ack_num/MSS>packet_received) {
+            packet_received = ReceivePacket.header->ack_num/MSS;
+        }
+        printf("Packet recived: %d\n", packet_received);
+
 
         if (global_ack_num>previous_global_ack_num) {
             previous_global_ack_num = global_ack_num;
-            buffer += MSS;
+            //buffer += MSS;
         }
     }
 
